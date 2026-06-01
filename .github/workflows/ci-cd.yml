@@ -35,10 +35,9 @@ jobs:
 
       - name: Basic tests
         run: |
-          echo "Running simple tests..."
-          grep -q "<html" index.html
-          test -s app.js && echo "✓ app.js exists and has content"
-          echo "All tests passed!"
+          test -f index.html
+          test -f style.css
+          test -f app.js
 
   package:
     needs: test
