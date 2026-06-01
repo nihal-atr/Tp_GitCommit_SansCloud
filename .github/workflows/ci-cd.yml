@@ -37,8 +37,8 @@ jobs:
      - name: Basic tests
         run: |
           echo "Running simple tests..."
-          test -s index.html && echo "✓ index.html exists"
-          test -s app.js && echo "✓ app.js exists"
+          grep -q "<html>" index.html
+          test -s app.js && echo "✓ app.js exists and has content"
           echo "All tests passed!"
 
   # 3. ÉTAPE DE PACKAGE
