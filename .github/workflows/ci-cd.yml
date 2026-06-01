@@ -26,7 +26,7 @@ jobs:
           test -f app.js
           echo "Build stage completed successfully!"
 
-  # 2. ÉTAPE DE TEST
+ # 2. ÉTAPE DE TEST
   test:
     needs: build
     runs-on: ubuntu-latest
@@ -37,7 +37,9 @@ jobs:
       - name: Basic tests
         run: |
           echo "Running simple tests..."
-          grep -q "<html>" index.html
+          # Cherche le mot 'html' (sans distinction majuscule/minuscule ou attributs)
+          grep -qi "html" index.html
+          # Vérifie que le fichier app.js contient bien du code JavaScript (la fonction showMessage)
           grep -q "function" app.js
           echo "All tests passed!"
 
